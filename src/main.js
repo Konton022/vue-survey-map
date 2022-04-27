@@ -1,6 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import YmapPlugin from 'vue-yandex-maps'
-import yaConfig from "./yaConfig"
+import { createApp } from 'vue';
+import { createRouter, createWebHashHistory } from 'vue-router';
+import App from './App.vue';
+import routes from './routes';
 
-createApp(App).use(YmapPlugin, yaConfig).mount('#app')
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes,
+});
+
+createApp(App).use(router).mount('#app');

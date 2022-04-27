@@ -1,15 +1,18 @@
 <template>
-   <SurveyApp />
+   <NavBar />
+   <router-view/>
+
  
 </template>
 
 <script>
 
-import SurveyApp from "./components/SurveyApp"
+import NavBar from "./components/NavBar.vue"
 export default {
   name: 'App',
   components: {
-    SurveyApp
+    NavBar
+    
   }
 }
 </script>
@@ -21,6 +24,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>

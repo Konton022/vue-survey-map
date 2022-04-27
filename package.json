@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "leaflet": "^1.8.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.14",
-    "vue-yandex-maps": "^0.12.3",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
