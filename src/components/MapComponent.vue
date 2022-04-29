@@ -7,13 +7,13 @@
 import {mapActions} from "vuex"
 export default {
     methods: {
-       ...mapActions({createMap: "lmap/createMapInstance"}) 
+       ...mapActions({createMap: "lmap/createMapInstance", removeMap:"lmap/removeMapInstance"}) 
     },
     mounted(){
         this.createMap(this.$refs.mapContainer)
     },
     beforeUnmount() {
-
+        this.removeMap()
     }
 
 }
