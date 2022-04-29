@@ -8,6 +8,14 @@ const lmap = {
             defaultCoords: [56.838290378039666, 60.6034161659809],
             defaultZoom: 12,
             mapInstance: null,
+            locations: [
+                { lat: 56.846131682978, lon: 60.589738200697916, title: 'job' },
+                {
+                    lat: 56.90915729377061,
+                    lon: 60.82291341534423,
+                    title: 'home',
+                },
+            ],
         };
     },
     mutations: {
@@ -39,6 +47,14 @@ const lmap = {
             map.remove();
             commit('SET_MAP_INSTANCE', null);
         },
+        addMarker({ rootGetters }, marker) {
+            const map = rootGetters['lmap/mapInstance'];
+
+            const m = leaflet.marker([marker.lat, marker.lon]);
+
+            console.log('m', m);
+            map.addTo(m);
+        },
     },
     getters: {
         GET_DEFAULT_COORDS(state) {
@@ -49,6 +65,9 @@ const lmap = {
         },
         GET_MAP_INSTANCE(state) {
             return state.mapInstance;
+        },
+        GET_LOCATIONS(state) {
+            return state.locations;
         },
     },
 };
