@@ -1,6 +1,6 @@
-import Home from './views/HomePage';
-import SignIn from './views/SignIn';
-import MapApp from './views/MapApp';
+import Home from '../views/HomePage';
+import SignIn from '../views/SignIn';
+import MapApp from '../views/MapApp';
 
 const routes = [
     { path: '/', component: Home },
