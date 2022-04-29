@@ -53,7 +53,7 @@ const lmap = {
             const m = leaflet.marker([marker.lat, marker.lon]);
 
             console.log('m', m);
-            map.addTo(m);
+            map.addLayer(m);
         },
     },
     getters: {
