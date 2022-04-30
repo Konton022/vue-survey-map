@@ -64,7 +64,7 @@ const lmap = {
             console.log('map marker', map);
             const m = leaflet
                 .marker([marker.lat, marker.lon])
-                .bindPopup(marker.title);
+                .bindPopup(`<b>${marker.title}<b>`);
 
             console.log('m', m);
             map.addLayer(m);
