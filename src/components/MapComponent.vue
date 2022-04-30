@@ -35,7 +35,7 @@ export default {
         
     },
     beforeUnmount() {
-        this.removeMap()
+
     },
     computed:{
         ...mapGetters({

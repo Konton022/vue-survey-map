@@ -1,6 +1,11 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+//----TO FIX BUG LEAFLET WITH DEFAULT ICONS-----//
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+//-------------------------------------------------------------//
+
 const lmap = {
     namespaced: true,
     state() {
@@ -38,6 +43,13 @@ const lmap = {
                         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                 }
             );
+            //----TO FIX BUG LEAFLET WITH DEFAULT ICONS-----//
+            let DefaultIcon = leaflet.icon({
+                iconUrl: icon,
+                shadowUrl: iconShadow,
+            });
+            leaflet.Marker.prototype.options.icon = DefaultIcon;
+            //----------------------------------------------
             map.addLayer(mapLayer);
             console.log('map', map);
             commit('SET_MAP_INSTANCE', map);
@@ -48,9 +60,11 @@ const lmap = {
             commit('SET_MAP_INSTANCE', null);
         },
         addMarker({ rootGetters }, marker) {
-            const map = rootGetters['lmap/mapInstance'];
-
-            const m = leaflet.marker([marker.lat, marker.lon]);
+            const map = rootGetters['lmap/GET_MAP_INSTANCE'];
+            console.log('map marker', map);
+            const m = leaflet
+                .marker([marker.lat, marker.lon])
+                .bindPopup(marker.title);
 
             console.log('m', m);
             map.addLayer(m);
