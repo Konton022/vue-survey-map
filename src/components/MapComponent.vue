@@ -1,5 +1,5 @@
 <template>
-    <div ref="mapContainer" class="leaflet-map">
+    <div ref="mapContainer" class="leaflet-map" @click.prevent="">
     </div>
     {{locations}}
 </template>
