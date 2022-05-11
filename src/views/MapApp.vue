@@ -1,16 +1,22 @@
 <template>
      <div class="map">
         <h1>Map</h1>
-        <map-component></map-component>
+
+        <div class="map-wrapper">
+            <map-list/>
+            <map-component/>
+        </div>
      </div>
 </template>
 <script>
 
 import MapComponent from '@/components/MapComponent.vue'
+import MapList from '@/components/MapList.vue'
 
 export default {
     components: {
-        MapComponent
+        MapComponent,
+        MapList
 
     }, 
     data() {
@@ -23,5 +29,9 @@ export default {
 }
 </script>
 <style scoped>
-
+    .map-wrapper {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        gap: 10px;
+    }
 </style>

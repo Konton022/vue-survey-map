@@ -1,7 +1,5 @@
 <template>
-    <div ref="mapContainer" class="leaflet-map" @click.prevent="">
-    </div>
-    {{locations}}
+    <div ref="mapContainer" class="leaflet-map" @click.prevent=""/>
 </template>
 <script>
 
@@ -17,7 +15,7 @@ export default {
         ...mapActions({
            createMap: "lmap/createMapInstance", 
            removeMap:"lmap/removeMapInstance", 
-           addMarker:"lmap/addMarker"
+           setMarker:"lmap/setMarker"
         }),
         set_locals(){
             this.locals = this.locations
@@ -30,7 +28,7 @@ export default {
         this.set_locals()
         for(let loc of this.locals){
             console.log('loc',loc);
-            this.addMarker(loc)
+            this.setMarker(loc)
         }
         
     },
@@ -47,7 +45,7 @@ export default {
     //     locals(locations){
     //         for(let loc of locations){
     //             console.log(loc);
-    //             this.addMarker(loc)
+    //             this.setMarker(loc)
     //         }
     //     }
     // }, 
@@ -61,6 +59,6 @@ export default {
     
     .leaflet-map{
         width: 100%;
-        height: 600px;
+        height: 80vh;
     }
 </style>

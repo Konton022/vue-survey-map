@@ -59,7 +59,7 @@ const lmap = {
             map.remove();
             commit('SET_MAP_INSTANCE', null);
         },
-        addMarker({ rootGetters }, marker) {
+        setMarker({ rootGetters }, marker) {
             const map = rootGetters['lmap/GET_MAP_INSTANCE'];
             console.log('map marker', map);
             const m = leaflet
