@@ -14,11 +14,20 @@ const lmap = {
             defaultZoom: 12,
             mapInstance: null,
             locations: [
-                { lat: 56.846131682978, lon: 60.589738200697916, title: 'job' },
+                {
+                    lat: 56.846131682978,
+                    lon: 60.589738200697916,
+                    title: 'job',
+                },
                 {
                     lat: 56.90915729377061,
                     lon: 60.82291341534423,
                     title: 'home',
+                },
+                {
+                    lat: 56.946131682978,
+                    lon: 60.289738200697916,
+                    title: 'hello',
                 },
             ],
         };
