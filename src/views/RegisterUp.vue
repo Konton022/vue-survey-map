@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form action="" @submit.prevent="">
+		<form action="" @submit.prevent="submitData()">
 		<h1>Registration</h1>
 
 			<input type="text" class="text" v-model="name" placeholder="name"/>
@@ -11,24 +11,57 @@
 	</div>
 </template>
 <script>
+import {mapActions} from "vuex"
 export default {
 	data() {
 		return {
 			name: null,
 			email: null,
 			password: null,
+			error:null
 		}
 	},
 	methods: {
-		
+		...mapActions({
+			registerUser: 'user/registerUp'
+		}),
+		async submitData(){
+			try {
+				if(this.name && this.email && this.password){
+					await this.registerUser(this.userData);
+					this.resetUserInput()
+					
+				}
+				
+			} catch (err) {
+				this.error = err.message
+			}
+		},
+		resetUserInput(){
+			this.name = null;
+			this.email = null;
+			this.password = null;
+		}
+	},
+	computed: {
+		userData(){
+			return {
+				name: this.name,
+				email: this.email,
+				password: this.password
+			}
+		}
 	}
 }
 </script>
 <style scoped>
 
 	form{
-		width: 70%;
-		margin: 50px auto;
+		width: 40rem;
+		margin: 10rem auto;
+		box-shadow: 0 0 5px grey;
+		padding: 3rem;
+		border-radius: 5px;
 	}
 	input, button{
 		box-sizing: border-box;
@@ -40,17 +73,20 @@ export default {
 	input {
 		outline: none;
 		border: none;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid rgb(223, 220, 220);
 		margin-bottom: 10px;
 	}
 	input:focus{
 		border-bottom: 1px solid blue;
 	}
 	button {
+		
 		margin-top: 40px;
 		border: none;
-		border-radius: 2px;
-		color: blue;
+		padding: 0.6rem;
+		border-radius: 5px;
+		color: whitesmoke;
+		background-color: grey;
 	}
 
 	
