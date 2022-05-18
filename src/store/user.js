@@ -1,6 +1,5 @@
 import { auth } from "@/firebase/config";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-
+import { createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const user = {
     namespaced: true,
@@ -27,9 +26,21 @@ const user = {
                 throw new Error('could not complete registration');
             }
         },
-		signInUserAction(){
-
-		}
+		async signInUserAction({commit}, {email, password}){
+            const res = await signInWithEmailAndPassword(auth, email, password);
+            if (res) {
+                commit('setUser', res.user);
+                commit('setUserAuth', true);
+            } else {
+                throw new Error('could not complete signIn');
+            }
+		},
+        async loginOut({ commit }) {
+            await signOut(auth);
+            commit('setUser', null);
+            commit('setUserUid', null);
+            commit('setUserAuth', false);
+        }    
 	}, 
     mutations:{
         SET_USER(user){
