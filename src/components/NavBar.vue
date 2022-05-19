@@ -1,10 +1,10 @@
 <template>
 	<div v-if="user">
-		<div class="user-info">
-			<span>{{user.displayName}}</span>
-			<button @click="logOut()">logOut</button>
-		</div>
 		<ul class="navbar">
+			<li>
+				<span>{{user.displayName}}</span>
+				<button @click="logOut()">logout</button>
+			</li>
 			<li><router-link to="/">Home</router-link></li>
 			<li><router-link to="/mapapp">Map</router-link></li>
 		</ul>
@@ -52,5 +52,8 @@ export default {
 	.navbar{
 		display: flex;
 		justify-content: right;
+	}
+	li button{
+		margin: 0 5px;
 	}
 </style>
