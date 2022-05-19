@@ -10,7 +10,7 @@ const user = {
         };
     },
     actions: {
-		async registerUp({ commit }, { email, password, name }) {
+		async registerUserAction({ commit }, { email, password, name }) {
             const res = await createUserWithEmailAndPassword(
                 auth,
                 email,
@@ -29,25 +29,30 @@ const user = {
 		async signInUserAction({commit}, {email, password}){
             const res = await signInWithEmailAndPassword(auth, email, password);
             if (res) {
-                commit('setUser', res.user);
-                commit('setUserAuth', true);
+                console.log("fb res", res.user);
+                commit('SET_USER', res.user);
+                commit('SET_USER_AUTH', true);
             } else {
                 throw new Error('could not complete signIn');
             }
 		},
-        async loginOut({ commit }) {
+        async loginOutAction({ commit }) {
             await signOut(auth);
-            commit('setUser', null);
-            commit('setUserUid', null);
-            commit('setUserAuth', false);
+            commit('SET_USER', null);
+            commit('SET_USER_AUTH', false);
         }    
 	}, 
     mutations:{
-        SET_USER(user){
-            this.user = user
+        SET_USER(state, user){
+            state.user = user
         },
-        SET_USER_AUTH(status){
-            this.isUserAuth = status
+        SET_USER_AUTH(state, status){
+            state.isUserAuth = status
+        }
+    },
+    getters: {
+        GET_USER(state){
+            return state.user
         }
     }
 };

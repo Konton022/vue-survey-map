@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<form action="" @submit.prevent="submitData()">
-		<h1>Registration</h1>
+		<h2>Registration</h2>
 
 			<input type="text" class="text" v-model="name" placeholder="name"/>
 			<input type="email" class="email" v-model="email" placeholder="email"/>
@@ -23,13 +23,14 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			registerUser: 'user/registerUp'
+			registerUser: 'user/registerUserAction'
 		}),
 		async submitData(){
 			try {
 				if(this.name && this.email && this.password){
 					await this.registerUser(this.userData);
 					this.resetUserInput()
+					this.$router.push('/mapapp')
 					
 				}
 				
