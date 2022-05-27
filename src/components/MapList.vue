@@ -34,6 +34,7 @@ export default {
         color: whitesmoke;
     }
     .markers-list {
+        min-width: 20rem;
         background-color: grey;
     }
 </style>

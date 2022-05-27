@@ -1,7 +1,7 @@
 <template>
      <div class="map">
         <h2>Map</h2>
-
+        <input-form/>
         <div class="map-wrapper">
             <map-list/>
             <map-component/>
@@ -12,11 +12,13 @@
 
 import MapComponent from '@/components/MapComponent.vue'
 import MapList from '@/components/MapList.vue'
+import InputForm from '@/components/InputForm.vue'
 
 export default {
     components: {
         MapComponent,
-        MapList
+        MapList,
+        InputForm
 
     }, 
     data() {

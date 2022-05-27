@@ -58,7 +58,9 @@ export default {
 <style scoped>
     
     .leaflet-map{
-        width: 100%;
+        /* width: 100%; */
+        margin-right: 0.5rem;
         height: 80vh;
+        min-width: 50rem;
     }
 </style>
